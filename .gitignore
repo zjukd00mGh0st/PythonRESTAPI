@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+pip-log.txt
+pip-wheel-metadata/
+dist/
+build/
+*.egg-info/
+.venv/
+
+# IDE and editor directories
+.idea/
+.vscode/
+*.sublime-workspace
+*.sublime-project
+
+# Test and coverage
+.coverage
+.coverage.*
+nosetests.xml
+test.db
+*.mo
+*.pot
+
+# Logs
+*.log
+
+# Local configuration
+instance/
+*.env
+*.env.*
+config.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Pytest cache
+.pytest_cache/
+
+# Database files
+*.sqlite3
+
+# Other files
+*.DS_Store
+*.tgz
+*.zip

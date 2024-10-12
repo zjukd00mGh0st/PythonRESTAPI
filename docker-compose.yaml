@@ -1,0 +1,24 @@
+services:
+  pydb:
+    image: postgres:latest
+    container_name: pydb
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USERNAME=bookroot
+      - POSTGRES_PASSWORD=IVeyphNNyDybSbAI
+      - POSTGRES_DB=bookpedia
+    networks:
+      - booknet
+
+  pyserver:
+    container_name: pyserver
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - HOST=0.0.0.0
+
+
+networks:
+  booknet:
