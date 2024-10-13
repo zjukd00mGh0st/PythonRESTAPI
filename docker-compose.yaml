@@ -5,19 +5,22 @@ services:
     ports:
       - "5432:5432"
     environment:
-      - POSTGRES_USERNAME=bookroot
+      - POSTGRES_USER=bookroot
       - POSTGRES_PASSWORD=IVeyphNNyDybSbAI
       - POSTGRES_DB=bookpedia
+    volumes:
+      - ./pyDBData:/var/lib/postgresql/data
     networks:
       - booknet
 
-  pyserver:
-    container_name: pyserver
-    ports:
-      - "8080:8080"
-    environment:
-      - PORT=8080
-      - HOST=0.0.0.0
+  # pyserver:
+  #   container_name: pyserver
+  #   ports:
+  #     - "8080:8080"
+  #   environment:
+  #     - PORT=8080
+  #     - HOST=0.0.0.0
+  #     - DATABASE_URL=
 
 
 networks:

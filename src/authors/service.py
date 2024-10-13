@@ -1,28 +1,30 @@
-from flask import Blueprint, jsonify
+from flask import jsonify
+# from ..decorators.db_session import inject_db_session
+from .dto.create_author import CreateAuthorDTO
 
 
-router = Blueprint("authors", __name__, url_prefix="/authors")
-
-
-@router.route("/", methods=["GET"])
-def get_authors():
+def get_authors(filters = []):
     authors = []
-    return { "authors": authors }, 200
 
-@router.route("/{id}", methods=["GET"])
-def get_author_by_id():
-    author = {}
-    return author, 200
+    return jsonify({ "authors": authors })
 
-@router.route("/", methods=["POST"])
-def create_author():
-    author = {}
-    return author, 201
 
-@router.route("/{id}", methods=["PUT"])
-def edit_author():
-    return author, 200
+def get_author_by_id(id: str):
+    pass
 
-@router.route("/{id}", methods=["DELETE"])
-def delete_author():
-    return "OK", 200
+
+def create_author(data: CreateAuthorDTO):
+    print("This is the data") 
+    print(data)
+
+    return jsonify({
+        "author": data.model_dump()
+    })
+
+
+def edit_author(id: str, data):
+    pass
+
+
+def delete_author(id: str):
+    pass
