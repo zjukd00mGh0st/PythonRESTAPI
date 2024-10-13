@@ -13,3 +13,4 @@ if not PORT:
 
 workers = 1
 bind = f"{HOST}:{PORT}"
+reload = True

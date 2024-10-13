@@ -3,11 +3,14 @@ from flask import jsonify
 from .dto.create_author import CreateAuthorDTO
 from .dto.get_author_by_id import GetAuthorByIdDTO
 from .dto.edit_author import EditAuthorDTO
+from .dto.get_authors import GetAuthorsDTO
 
 
-def get_authors(filters = []):
+def get_authors(query: GetAuthorsDTO):
+    print("This is the query")
+    print(query)
+
     authors = []
-
     return jsonify({ "authors": authors })
 
 

@@ -4,8 +4,9 @@ from datetime import date
 
 
 class GetAuthorsDTO(BaseModel):
-    id: Optional[str]
-    nombre: Optional[str]
-    apellido: Optional[str]
-    fecha_nacimiento: Optional[date]
-    fecha_creacion: Optional[date]
+    id: Optional[str] = None
+    nombre: Optional[str] = None
+    apellido: Optional[str] = None
+    fecha_nacimiento: Optional[date] = None
+    fecha_creacion: Optional[date] = None
+
