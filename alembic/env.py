@@ -1,5 +1,5 @@
 # My db's entities
-from src.db.db import Base
+from ..src.db.db import Base
 
 from logging.config import fileConfig
 
