@@ -1,5 +1,5 @@
 import uuid
-from sqlalchemy import create_engine, Column, Integer, String, ForeignKey, DateTime, Date
+from sqlalchemy import create_engine, Column, String, ForeignKey, DateTime, Date
 from sqlalchemy.orm import relationship, sessionmaker, scoped_session
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.ext.declarative import declarative_base
@@ -13,14 +13,6 @@ Session = scoped_session(sessionmaker(bind=engine))
 Base = declarative_base()
 
 
-# Class to implement a singleton (single db instance across the app)
-class DBSession:
-    _instance = None
-
-    def __new__(cls):
-        if cls._instance is None:
-            cls._instance = Session()
-        return cls._instance
 
 # Database entities
 class Author(Base):
@@ -45,10 +37,9 @@ class Book(Base):
 
 @contextmanager
 def db_session():
-    session = DBSession()
+    session = Session()
     try:
         yield session
-        session.commit()
     except:
         session.rollback()
         raise
@@ -57,6 +48,4 @@ def db_session():
 
 
 def init_db():
-    print("Initializing the database")
-    print(DATABASE_URL)
     Base.metadata.create_all(engine)

@@ -52,13 +52,9 @@ def create_author():
 @router.route("/<id>", methods=["PUT"])
 def edit_author(id: str):
     try:
-        author_id = GetAuthorByIdDTO(id=id)
         data = request.get_json()
-        print(data)
-        # author_data = EditAuthorDTO()
-        # author_data = EditAuthorDTO(**data)
-        # return authors_service.edit_author(author_id, author_data)
-        return 200
+        author_data = EditAuthorDTO(**data, id=id)
+        return authors_service.edit_author(author_data)
     except ValidationError as e:
         return jsonify({
             "error": json.loads(e.json())

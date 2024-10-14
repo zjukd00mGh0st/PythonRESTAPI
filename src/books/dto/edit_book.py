@@ -1,14 +1,13 @@
-from pydantic import BaseModel, constr, validator
+from pydantic import BaseModel, validator
+from datetime import datetime
 from typing import Optional
-from datetime import date
 from uuid import UUID
 
 
-class EditAuthorDTO(BaseModel):
+class EditBookDTO(BaseModel):
     id: str
-    nombre: constr(min_length=0, max_length=100)
-    apellido: constr(min_length=0, max_length=100)
-    fecha_nacimiento: Optional[date]
+    titulo: Optional[str]
+    fecha_publicacion: Optional[datetime]
 
     @validator("id")
     def validate_id(cls, value):

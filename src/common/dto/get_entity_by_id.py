@@ -1,5 +1,5 @@
 from pydantic import BaseModel, ValidationError, validator
-import uuid
+from uuid import UUID
 
 
 class GetEntityByIDDTO(BaseModel):
@@ -8,8 +8,7 @@ class GetEntityByIDDTO(BaseModel):
     @validator("id")
     def validate_id(cls, value):
         try:
-            uuid.UUID(value)
+            UUID(value)
             return value
-        except ValueError as e:
-            print(str(e))
-            raise ValueError("Invalid UUUID value")
+        except ValueError:
+            raise ValueError("El ID no es un UUID valido")
